@@ -7,14 +7,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
-import threading
 
-def process_page(title, href, driver, c, pdf_lock):
-    
+def process_page(title, href, driver, c):
     # 게시글 방문
     driver.get(href)
     time.sleep(1)  # 페이지 로딩 대기
-    
+
     # 등록일 정보 크롤링
     date_elements = driver.find_elements(By.CLASS_NAME, "date")
     date_text = ""
@@ -24,39 +22,43 @@ def process_page(title, href, driver, c, pdf_lock):
             date_text = date_element.text.replace("등록일", "").strip()
             break
 
-    # PDF 파일 작업 (동기화)
-    with pdf_lock:
-        c.setFont("Korean", 10)  # 폰트 크기를 10으로 설정
-        c.drawString(100, 700, f"Title: {title}")  # 타이틀 추가
-        c.drawString(100, 670, f"등록일: {date_text}")  # 등록일 추가
-        y_position = 640  # 내용 시작 위치
-        view_cont = driver.find_element(By.ID, "view_cont").text
-        lines = view_cont.split("\n")
-        lines = [line for line in lines if line.strip() != '']
-        
-        for line in lines:
+    # PDF 파일 작업
+    font_size = 10  # 폰트 크기
+    gap = font_size + 2  # 줄간격
+    starting_point = 700  # 시작 위치
+    y_position = 700  # 현위치
+    x_position = 30 # 시작 위치
+    max_words = 70 #최대 n자씩 표시
+    c.setFont("Korean", 10)  # 폰트 크기를 10으로 설정
+    c.drawString(x_position, y_position, f"Title: {title}")  # 타이틀 추가
+    y_position -= gap
+    c.drawString(x_position, y_position, f"등록일: {date_text}")  # 등록일 추가
+    y_position -= gap
+    view_cont = driver.find_element(By.ID, "view_cont").text
+    lines = view_cont.split("\n")
+    lines = [line for line in lines if line.strip() != '']
+    for line in lines:
+        while len(line) > 0:
             if y_position < 50:
                 c.showPage()
-                c.setFont("Korean", 10)
-                c.drawString(100, 700, f"Title: {title}")
-                c.drawString(100, 670, f"등록일: {date_text}")
-                y_position = 640
-            c.drawString(100, y_position, line)
-            y_position -= 12
-            
-        y_position -= 12
-        c.showPage()
+                c.setFont("Korean", font_size)
+                y_position = starting_point
+            line_part = line[:max_words]
+            c.drawString(x_position, y_position, line_part)
+            y_position -= gap
+            line = line[max_words:]
+    y_position -= gap
+    c.showPage()
+
 
 def crawling(topic, url):
-    #현재 진행상황 표시
     print(f"{topic} progressing(0%)", end="\r")
-    
     # 크롬 드라이버 자동 업데이트
     chrome_driver_path = ChromeDriverManager().install()
 
     # Selenium 웹 드라이버 설정
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")  # 브라우저를 숨김
+    #chrome_options.add_argument("--headless")  # 브라우저를 숨김
     chrome_options.add_argument("--disable-gpu")
     service = webdriver.chrome.service.Service(executable_path=chrome_driver_path)
 
@@ -65,13 +67,9 @@ def crawling(topic, url):
 
     c = canvas.Canvas(pdf_file_path, pagesize=letter)
 
-    # PDF 작업 동기화를 위한 Lock 객체 생성
-    pdf_lock = threading.Lock()
-
     # 한글 폰트 설정
     font_path = "./font/NanumGothic.ttf"
     pdfmetrics.registerFont(TTFont("Korean", font_path))
-
 
     # 1. url에 진입한다.
     driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -88,18 +86,9 @@ def crawling(topic, url):
         titles = [link.text for link in links]
         hrefs = [link.get_attribute("href") for link in links]
 
-        # 쓰레드 리스트 생성
-        threads = []
-
-        # 각 링크별로 쓰레드 생성 및 실행
+        # 각 링크별로 페이지 처리
         for title, href in zip(titles, hrefs):
-            thread = threading.Thread(target=process_page, args=(title, href, driver, c, pdf_lock))
-            thread.start()
-            threads.append(thread)
-
-        # 모든 쓰레드가 종료될 때까지 대기
-        for thread in threads:
-            thread.join()
+            process_page(title, href, driver, c)
         
         #현재 진행상황 출력
         progress_percentage = page_num * page_progress_step
