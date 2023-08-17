@@ -58,7 +58,7 @@ def crawling(topic, url):
 
     # Selenium 웹 드라이버 설정
     chrome_options = webdriver.ChromeOptions()
-    #chrome_options.add_argument("--headless")  # 브라우저를 숨김
+    chrome_options.add_argument("--headless")  # 브라우저를 숨김
     chrome_options.add_argument("--disable-gpu")
     service = webdriver.chrome.service.Service(executable_path=chrome_driver_path)
 
@@ -119,4 +119,9 @@ def real_estate_research_crawl():
 def tax_research_crawl():
     topic = "tax"
     url = "https://omoney.kbstar.com/quics?page=C042014&cc=b037807:b037807"
+    crawling(topic, url)
+
+def investment_research_crawl():
+    topic = "investment"
+    url = "https://omoney.kbstar.com/quics?page=C042016&cc=b039708:b039708"
     crawling(topic, url)
