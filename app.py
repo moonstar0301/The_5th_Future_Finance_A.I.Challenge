@@ -23,7 +23,7 @@ app = Flask(__name__)
 os.environ["OPENAI_API_KEY"] = 'your_api_key'
 
 # PyPDFLoader를 사용하여 'investment.pdf' 파일을 로드합니다.
-loader = PyPDFLoader('/content/drive/MyDrive/investment.pdf')
+loader = PyPDFLoader('./researches/investment.pdf')
 # 로더를 사용하여 PDF 파일의 내용을 documents 변수에 로드합니다.
 documents = loader.load()
 # 'CharacterTextSplitter'를 사용하여 텍스트를 크기 1000의 청크로 분할합니다. 청크 간의 겹침은 없습니다.

@@ -39,7 +39,6 @@ function appendMessage(message, sender) {
       method: 'POST',
       data: { message: userMessage },  // 데이터 필드명 수정
       success: function(response) {
-        appendMessage(userMessage, 'user');  // 사용자 메시지를 화면에 표시
         appendMessage(response, 'bot');      // 챗봇 응답을 화면에 표시
         scrollToBottom();
       },
@@ -53,7 +52,6 @@ function appendMessage(message, sender) {
   // 서버로 메시지 전송 함수 (가짜 챗봇 응답 사용)
   function sendToServer(userMessage) {
     const botResponse = getBotResponse(userMessage);
-    appendMessage(botResponse, 'bot');
     scrollToBottom();
   }
   
