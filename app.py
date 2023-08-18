@@ -20,7 +20,7 @@ from langchain.memory import (
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
 
 # PyPDFLoader를 사용하여 'investment.pdf' 파일을 로드합니다.
 loader = PyPDFLoader('./researches/investment.pdf')
