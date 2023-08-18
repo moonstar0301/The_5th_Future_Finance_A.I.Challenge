@@ -7,4 +7,4 @@
 ## 🤓프로젝트 설명
 - 추후추가
 ### :rainbow: Contributors
-| [moonstar0301](https://github.com/moonstar0301) | [dong-yxxn](https://github.com/dong-yxxn) |
+| [moonstar0301](https://github.com/moonstar0301) | [dong-yxxn](https://github.com/dong-yxxn) | [hyeyeong02](https://github.com/hyeyeong02) |
