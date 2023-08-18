@@ -1,81 +1,81 @@
 /* 채팅 박스 스타일 */
 #chatbox {
-    max-height: calc(100vh - 50px);
-    overflow-y: auto;
-    width: 70%;
-    margin: 0 auto;
-  }
-  
-  /* 사용자와 챗봇 메시지 스타일 */
-  .alert-primary {
-    background-color: #f0f8ff;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    float: right;
-    clear: both;
-  }
-  
-  .alert-secondary {
-    background-color: #e6e6e6;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
-    float: left;
-    clear: both;
-  }
-  
-  /* 입력 필드와 버튼 스타일 */
-  #userInput {
-    border-radius: 0;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-color: #ccc;
-    width: 80%;
-  }
-  
-  /* 전송 버튼 스타일 */
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    margin-left: 5px;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-  
-  /* 전체 화면 세로 방향으로 꽉 차게 조정 */
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    min-height: 100dvh;
-  }
-  
-  .container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  width: 100%;
+  margin: 0 auto;
+}
 
-  .justify-content-center {
-    display: flex;
-    align-items: center;
-    min-height: 100dvh;
-    min-width: 100dvh;
-  }
-  
-  .card {
-    flex-grow: 1;
-    width: 500px;
-    height: calc(100vh - 50px);
-    margin-top: 20px;
-    overflow-y: auto;
-  }
-  
+/* 사용자와 챗봇 메시지 스타일 */
+.alert-primary {
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  margin: 10px;
+  margin-left: 70px;
+  padding: 10px;
+  float: right;
+  clear: both;
+}
+
+.alert-secondary {
+  background-color: #e6e6e6;
+  border-radius: 10px;
+  margin: 10px;
+  margin-right: 70px;
+  padding: 10px;
+  float: left;
+  clear: both;
+}
+
+/* 입력 필드와 버튼 스타일 */
+#userInput {
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: #ccc;
+  width: 80%;
+}
+
+/* 전송 버튼 스타일 */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  margin-left: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* 전체 화면 세로 방향으로 꽉 차게 조정 */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  min-height: 100dvh;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.justify-content-center {
+  display: flex;
+  align-items: center;
+  min-height: 100dvh;
+  min-width: 100dvh;
+}
+
+.card {
+  flex-grow: 1;
+  width: 500px;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+}

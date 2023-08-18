@@ -48,7 +48,6 @@ function getBotResponse(userMessage) {
   });
 }
 
-
 // 서버로 메시지 전송 함수 (가짜 챗봇 응답 사용)
 function sendToServer(userMessage) {
   const botResponse = getBotResponse(userMessage);
