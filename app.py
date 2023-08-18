@@ -20,7 +20,7 @@ from langchain.memory import (
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = 'your_api_key'
+os.environ["OPENAI_API_KEY"] = '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'
 
 # PyPDFLoader를 사용하여 'investment.pdf' 파일을 로드합니다.
 loader = PyPDFLoader('./researches/investment.pdf')
@@ -50,13 +50,14 @@ vectordb = Chroma(
     embedding_function=embedding)
 # 프롬프트를 'prompt_template'변수에 저장합니다.
 prompt_template = """Use the following pieces of context to answer the question at the end. If you don't know the answer, just say that you don't know, don't try to make up an answer.
-you are competent financial advisor.
+you are competent financial advisor. Today's date is August 18, 2023.
 
 {context}
 
 Question: {question}
 
-Don't answer with short answers, answer with complete sentences.
+Don't answer with short answers, answer with complete sentences. 
+Your answers should be detailed based on evidence, and don't say unnecessary things. Let's think step by step.
 Answer in Korean:"""
 # PROMPT에 'context'와 'question'을 입력 변수로하는 프롬프트 템플릿을 저장합니다.
 PROMPT = PromptTemplate(
@@ -93,6 +94,22 @@ def process_llm_response(llm_response):
     #for source in llm_response["source_documents"]:
     #    print(source.metadata["page"])
 
+query_list = []
+
+def process_query(query):
+  if(len(query_list)==0):
+    query_list.append(query)
+    return query
+  elif(len(query_list)==1):
+    result = "지금 질문은'{}', 이전질문은 '{}'이야. 이전질문은 현재질문과 관련있을때만 고려해서 답해줘.".format(query, query_list[-1])
+    query_list.append(query)
+    return result
+  else:
+    result = "{}, 이전질문은 '{}'이니까 참고해서 답해줘. 이전질문은 현재질문과 관련있을때만 고려해서 답해줘.".format(query, ', '.join(query_list))
+    query_list.append(query)
+    query_list.pop(0)
+    return result
+
 
 @app.route("/")
 def index():
@@ -102,6 +119,7 @@ def index():
 def chat():
     # Get message from request data
     user_message = request.form.get("message")
+    user_message = process_query(user_message)
 
     # Process user message using the chatbot logic
     bot_response = process_llm_response(qa_chain(user_message))
