@@ -101,13 +101,14 @@ def index():
 @app.route("/chat", methods=["POST"])
 def chat():
     # Get message from request data
-    query = request.form.get("message")
-    
-    # Get response from OpenAI  model
-    response = process_llm_response(qa_chain(query))
-    
-    # Return chatbot response
-    return render_template("index.html", user_message=query, bot_response=response)
+    user_message = request.form.get("message")
+
+    # Process user message using the chatbot logic
+    bot_response = process_llm_response(qa_chain(user_message))
+
+    # Return chatbot response as JSON
+    return jsonify(bot_response)
+
 
 # Run the app
 if __name__ == "__main__":

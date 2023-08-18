@@ -34,9 +34,21 @@ function appendMessage(message, sender) {
   
   // 가짜 챗봇 응답 함수 (가상의 응답 로직 사용)
   function getBotResponse(userMessage) {
-    // 여기에 챗봇 응답 로직을 추가하세요
-    return "챗봇 응답 예시: " + userMessage;
+    $.ajax({
+      url: '/chat',  // Flask 서버 경로
+      method: 'POST',
+      data: { message: userMessage },  // 데이터 필드명 수정
+      success: function(response) {
+        appendMessage(userMessage, 'user');  // 사용자 메시지를 화면에 표시
+        appendMessage(response, 'bot');      // 챗봇 응답을 화면에 표시
+        scrollToBottom();
+      },
+      error: function() {
+        console.error('Error while fetching bot response.');
+      }
+    });
   }
+  
   
   // 서버로 메시지 전송 함수 (가짜 챗봇 응답 사용)
   function sendToServer(userMessage) {
