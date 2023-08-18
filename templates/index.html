@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 부트스트랩 css 사용 -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <!-- style.css 포함 -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Chatbot UI</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Chatbot</h4>
+          </div>
+          <div class="card-body" id="chatbox">
+            <!-- 채팅 메시지가 표시될 영역 -->
+          </div>
+          <div class="card-footer">
+            <div class="input-group">
+              <input type="text" id="userInput" class="form-control flex-grow-1" placeholder="메시지 입력">
+              <div class="input-group-append">
+                <button class="btn btn-primary" onclick="sendMessage()">전송</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--  부트스트랩 js 사용 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
