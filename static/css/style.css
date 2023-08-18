@@ -1,6 +1,6 @@
 /* 채팅 박스 스타일 */
 #chatbox {
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 50px);
     overflow-y: auto;
     width: 70%;
     margin: 0 auto;
@@ -53,6 +53,7 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    min-height: 100dvh;
   }
   
   .container {
@@ -62,10 +63,18 @@
     justify-content: flex-start;
     align-items: center;
   }
+
+  .justify-content-center {
+    display: flex;
+    align-items: center;
+    min-height: 100dvh;
+    min-width: 100dvh;
+  }
   
   .card {
     flex-grow: 1;
     width: 500px;
+    height: calc(100vh - 50px);
     margin-top: 20px;
     overflow-y: auto;
   }
