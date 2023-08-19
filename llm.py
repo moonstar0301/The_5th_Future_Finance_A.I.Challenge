@@ -174,8 +174,9 @@ def mindmap_generator(vectordb, query):
     result = process_llm_response_mindmap(qa_chain_mindmap(query))
     small_subject = []
     contents = []
+    local_vars = locals()
     try:
-        exec(result)
+        exec(result, globals(), local_vars)
     except Exception as e:
         pass
-    return(small_subject, contents)
+    return local_vars['small_subject'], local_vars['contents']
