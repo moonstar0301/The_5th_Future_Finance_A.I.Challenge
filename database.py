@@ -20,7 +20,6 @@ from langchain.memory import (
 import random
 
 def database_generator():
-    os.environ["OPENAI_API_KEY"] = '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'
 
     # PyPDFLoader를 사용하여 'investment.pdf' 파일을 로드합니다.
     loader = PyPDFLoader('./researches/total_research.pdf')
