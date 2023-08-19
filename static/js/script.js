@@ -1,3 +1,5 @@
+// script.js
+
 // 메시지 추가 함수
 function appendMessage(message, sender) {
   const chatbox = document.getElementById('chatbox');
@@ -21,8 +23,8 @@ function sendMessage() {
   appendMessage(userMessage, 'user');
   scrollToBottom();
 
-  sendToServer(userMessage);
-
+  getBotResponse(userMessage);
+  
   userInput.value = '';
 }
 
@@ -32,15 +34,16 @@ function scrollToBottom() {
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
-// 가짜 챗봇 응답 함수 (가상의 응답 로직 사용)
+// 가짜 챗봇 응답 함수
 function getBotResponse(userMessage) {
   $.ajax({
     url: '/chat',  // Flask 서버 경로
     method: 'POST',
-    data: { message: userMessage },  // 데이터 필드명 수정
+    data: { message: userMessage },
     success: function(response) {
-      appendMessage(response, 'bot');      // 챗봇 응답을 화면에 표시
+      appendMessage(response.bot_response, 'bot');
       scrollToBottom();
+      anotherFunction(response.small_subject, response.contents);
     },
     error: function() {
       console.error('Error while fetching bot response.');
@@ -48,10 +51,12 @@ function getBotResponse(userMessage) {
   });
 }
 
-// 서버로 메시지 전송 함수 (가짜 챗봇 응답 사용)
-function sendToServer(userMessage) {
-  const botResponse = getBotResponse(userMessage);
-  scrollToBottom();
+// 다른 함수에서 사용되는 샘플 함수
+function anotherFunction(small_subject, contents) {
+  // 이 함수에서 small_subject와 contents를 활용하여 원하는 작업을 수행할 수 있습니다.
+  console.log('small_subject:', small_subject);
+  console.log('contents:', contents);
+  // 예: small_subject와 contents를 이용한 그래프 그리기, 목록 생성 등
 }
 
 // 엔터 키 입력 이벤트 처리

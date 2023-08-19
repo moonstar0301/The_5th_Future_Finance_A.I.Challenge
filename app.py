@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = 'your_api_key'
+os.environ["OPENAI_API_KEY"] = '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'
 
 # Generating vector database
 vectordb = database_generator()
@@ -16,24 +16,21 @@ def index():
 
 @app.route("/chat", methods=["POST"])
 def chat():
-    # Get message from request data
     user_message = request.form.get("message")
-
-    # Process user message using the chatbot logic
-    bot_response = process_llm_response(user_message,vectordb)
-
-    # Return chatbot response as JSON
-    return jsonify(bot_response)
-
-# MindMap Question generator. 수정필요 
-@app.route("/chat", methods=["POST"])
-def mgenerator():
-    user_message = request.form.get("message")
-    small_subject = []
-    contents = []
+    
+    # Process user message using both logic
+    bot_response = process_llm_response(user_message, vectordb)
     small_subject, contents = mindmap_generator(vectordb, user_message)
-    # Return chatbot response as JSON
-    return jsonify(small_subject, contents)
+
+    # Return combined response as JSON
+    response_data = {
+        "bot_response": bot_response,
+        "small_subject": small_subject,
+        "contents": contents
+    }
+
+    return jsonify(response_data)
+
 
 
 # Recommended Question generator. 수정필요 
