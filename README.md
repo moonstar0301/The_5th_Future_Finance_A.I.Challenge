@@ -1,4 +1,4 @@
-# KB 국민은행 The 5th Future Finance A.I.Challenge - AI 전문위원
+# KB 국민은행 The 5th Future Finance A.I.Challenge - 챗봇
 
 이 프로젝트는 KB 국민은행 The 5th Future Finance A.I.Challenge 공모전에 출품된 작품으로, AI 전문위원에게 물어보고 관련 답을 얻을 수 있는 챗봇 서비스입니다.
 
