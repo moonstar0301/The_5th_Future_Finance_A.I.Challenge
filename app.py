@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = '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'
 
 # Generating vector database
 vectordb = database_generator()
@@ -22,6 +22,9 @@ def chat():
     bot_response = process_llm_response(user_message, vectordb)
     small_subject, contents = mindmap_generator(vectordb, user_message)
 
+    if not small_subject and not contents:
+        bot_response += ' with empty list'
+    
     # Return combined response as JSON
     response_data = {
         "bot_response": bot_response,
