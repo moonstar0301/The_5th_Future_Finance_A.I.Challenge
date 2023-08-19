@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = 'your_api_key'
 
 # Generating vector database
 vectordb = database_generator()
@@ -21,15 +21,19 @@ def chat():
     # Process user message using both logic
     bot_response = process_llm_response(user_message, vectordb)
     small_subject, contents = mindmap_generator(vectordb, user_message)
-
-    if not small_subject and not contents:
-        bot_response += ' with empty list'
     
-    # Return combined response as JSON
+    mind_map_flag = 1 # 마인드맵 버튼 활성화 여부
+    if not small_subject and not contents:
+#        bot_response += ' with empty list'
+        mind_map_flag = 0 # 마인드맵 불가능이면 비활성화
+    
+    
+    # Return combined response as JSON화
     response_data = {
         "bot_response": bot_response,
         "small_subject": small_subject,
-        "contents": contents
+        "contents": contents,
+        "mind_map_flag": mind_map_flag
     }
 
     return jsonify(response_data)

@@ -43,7 +43,7 @@ function getBotResponse(userMessage) {
     success: function(response) {
       appendMessage(response.bot_response, 'bot');
       scrollToBottom();
-      anotherFunction(response.small_subject, response.contents);
+      //anotherFunction(response.small_subject, response.contents);
     },
     error: function() {
       console.error('Error while fetching bot response.');
