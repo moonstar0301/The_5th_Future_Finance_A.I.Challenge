@@ -10,7 +10,7 @@
 
 프로젝트를 실행하기 전에 아래 단계를 따라주세요:
 
-1. `requirements.txt` 파일을 실행하여 필요한 패키지를 설치하세요.
+1. 필요한 패키지를 설치하기 위해 터미널에서 다음 명령어를 실행하세요: `pip install -r requirements.txt`
 2. KB 자산관리 전문가 칼럼([링크](https://omoney.kbstar.com/quics?page=C042014))에서 최신 칼럼을 크롤링하기 위해 아래 명령어를 실행하세요: `python main.py`
 
 ## 시작하기
