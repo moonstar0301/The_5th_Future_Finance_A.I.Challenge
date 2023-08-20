@@ -37,10 +37,14 @@ KB 전문가 칼럼을 크롤링한 데이터를 Large Language Model (LLM)에 �
 
 ## 사용 화면
 
-![사용 화면 예시 1](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/a4f2853a-99a1-44aa-a9a0-1748dbf25051)
-![사용 화면 예시 2](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/10a4a169-99cb-4a2f-8dcf-dd6a2e632192)
-![사용 화면 예시 3](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/fd487b70-0d95-4ad5-b146-d57431e1ddf7)
-![사용 화면 예시 4](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/35835487-6392-43dd-b40b-4c9db6c87025)
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/a4f2853a-99a1-44aa-a9a0-1748dbf25051" alt="사용 화면 예시 1" width="200"/>
+    <img src="https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/10a4a169-99cb-4a2f-8dcf-dd6a2e632192" alt="사용 화면 예시 2" width="200"/>
+</div>
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/fd487b70-0d95-4ad5-b146-d57431e1ddf7" alt="사용 화면 예시 3" width="200"/>
+    <img src="https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/35835487-6392-43dd-b40b-4c9db6c87025" alt="사용 화면 예시 4" width="200"/>
+</div>
 
 > Team. DART
 
