@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = 'your_api_key'
+os.environ["OPENAI_API_KEY"] = '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'
 
 # Generating vector database
 vectordb = database_generator()
@@ -20,36 +20,31 @@ def chat():
     
     # Process user message using both logic
     bot_response = process_llm_response(user_message, vectordb)
-    small_subject, contents = mindmap_generator(vectordb, user_message)
+    subject, contents = mindmap_generator(vectordb, user_message)
     
     mind_map_flag = 1 # 마인드맵 버튼 활성화 여부
-    if not small_subject and not contents:
+    if not subject and not contents:
 #        bot_response += ' with empty list'
         mind_map_flag = 0 # 마인드맵 불가능이면 비활성화
-    
     
     # Return combined response as JSON화
     response_data = {
         "bot_response": bot_response,
-        "small_subject": small_subject,
+        "subject": subject,
         "contents": contents,
         "mind_map_flag": mind_map_flag
     }
 
     return jsonify(response_data)
 
-
-
-# Recommended Question generator. 수정필요 
+# Recommended Question generator
 @app.route("/qgenerator", methods=["POST"])
 def qgenerator():
 
-    bot_response = []
-    bot_response = q_generator(vectordb)
+    bot_recommend = []
+    bot_recommend = q_generator(vectordb)
     # Return chatbot response as JSON
-    return jsonify(bot_response)
-
-
+    return jsonify(bot_recommend)
 
 # Run the app
 if __name__ == "__main__":

@@ -8,7 +8,7 @@
 
 /* 사용자와 챗봇 메시지 스타일 */
 .alert-primary {
-  background-color: #f0f8ff;
+  background-color: #ffbb00;
   border-radius: 10px;
   margin: 10px;
   margin-left: 70px;
@@ -18,7 +18,7 @@
 }
 
 .alert-secondary {
-  background-color: #e6e6e6;
+  background-color: #f7f6f2;
   border-radius: 10px;
   margin: 10px;
   margin-right: 70px;
@@ -39,14 +39,14 @@
 
 /* 전송 버튼 스타일 */
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  margin-left: 5px;
+  background-color: #fff;
+  border-color: #60584c;
+  margin-left: 15px;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #ffbc00;
+  border-color: #60584c;
 }
 
 /* 전체 화면 세로 방향으로 꽉 차게 조정 */
@@ -78,4 +78,13 @@ html, body {
   width: 500px;
   height: calc(100vh - 50px);
   overflow-y: auto;
+}
+
+.btn-content {
+  color: #fff;
+  background-color: #8a8d8f;
+  border-color: #8a8d8f;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
 }
