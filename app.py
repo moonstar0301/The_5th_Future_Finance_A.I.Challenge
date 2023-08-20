@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = 'your_api_key'
 
 # Generating vector database
 vectordb = database_generator()
