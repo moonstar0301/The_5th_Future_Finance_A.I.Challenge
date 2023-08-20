@@ -50,4 +50,9 @@ KB 전문가 칼럼을 크롤링한 데이터를 Large Language Model (LLM)에 �
 
 
 ### :rainbow: Contributors
-| [moonstar0301](https://github.com/moonstar0301) | [dong-yxxn](https://github.com/dong-yxxn) | [hyeyeong02](https://github.com/hyeyeong02) |
+### :rainbow: Contributors
+
+- [moonstar0301](https://github.com/moonstar0301) - 모델 설계 및 LLM 개발
+- [dong-yxxn](https://github.com/dong-yxxn) - 백엔드 개발
+- [hyeyeong02](https://github.com/hyeyeong02) - 프론트엔드 개발
+
