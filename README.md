@@ -23,7 +23,7 @@ KB 전문가 칼럼을 크롤링한 데이터를 Large Language Model (LLM)에 �
 ## 시작하기
 
 프로젝트를 실행하려면 다음 단계를 따라주세요:
-
+1. app.py에서 os.environ["OPENAI_API_KEY"] = 'your_api_key'의 your_api_key를 발급받은 OpenAI api key로 교체하세요
 1. Flask 애플리케이션을 실행하기 위해 터미널에서 `flask run` 명령을 실행하세요.
 2. 웹 브라우저에서 다음 URL로 이동하여 프로젝트를 사용하세요: [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
