@@ -32,8 +32,10 @@
 
 ## 사용 화면
 
-![사용 화면 예시 1](사용화면_이미지_링크_1)
-![사용 화면 예시 2](사용화면_이미지_링크_2)
+![사용 화면 예시 1](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/a4f2853a-99a1-44aa-a9a0-1748dbf25051)
+![사용 화면 예시 2](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/10a4a169-99cb-4a2f-8dcf-dd6a2e632192)
+![사용 화면 예시 3](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/fd487b70-0d95-4ad5-b146-d57431e1ddf7)
+![사용 화면 예시 4](https://github.com/moonstar0301/The_5th_Future_Finance_A.I.Challenge/assets/129285999/35835487-6392-43dd-b40b-4c9db6c87025)
 
 > Team. DART
 
