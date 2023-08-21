@@ -49,7 +49,7 @@ KB 전문가 칼럼을 크롤링한 데이터를 Large Language Model (LLM)에 �
 > Team. DART
 
 
-### :rainbow: Contributors
+
 ### :rainbow: Contributors
 
 - [moonstar0301](https://github.com/moonstar0301) - 모델 설계 및 LLM 개발
